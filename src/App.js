@@ -1,24 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Form } from "./Form/Form";
+import HouseWrapper from "./HouseCanvas/Table";
+
+export const Context = React.createContext({});
+
 
 function App() {
+  const [countertopWidth, setСountertopWidth] = useState(5);
+  const [countertopHeight, setСountertopHeight] = useState(5);
+  const [countertopDepth, setCountertopDepth] = useState(0.1);
+  const [countertopColor, setCountertopColor] = useState("#855757");
+  const [legsColor, setLegsColor] = useState("black");
+  const [file, setFile] = useState(false);
+  const [isUploadedImage, setIsUploadedImage] = useState(false);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Context.Provider
+        value={{
+          some: 1,
+          countertopWidth,
+          setСountertopWidth,
+          countertopHeight,
+          setСountertopHeight,
+          countertopDepth,
+          setCountertopDepth,
+          countertopColor,
+          setCountertopColor,
+          legsColor,
+          setLegsColor,
+          file,
+          setFile,
+          isUploadedImage,
+          setIsUploadedImage,
+        }}
+      >
+        <div style={{ height: "900px", display: "flex" }}>
+          {/* <TableEditor /> */}
+          <HouseWrapper />
+          <Form />
+        </div>
+      </Context.Provider>
+    </>
   );
 }
 
